@@ -78,12 +78,32 @@ const deleteTask = function () {
 
 const taskCompleted = function () {
   const listItem = this.parentNode;
+
+  listItem.classList.remove('editMode');
+
+  const editInput = listItem.querySelector('input[type=text]');
+  const label = listItem.querySelector('label');
+  const editBtn = listItem.querySelector('.edit');
+
+  editInput.value = label.innerText;
+  editBtn.innerText = 'Edit';
+
   completedTasksHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskIncomplete);
 };
 
 const taskIncomplete = function () {
   const listItem = this.parentNode;
+
+  listItem.classList.remove('editMode');
+
+  const editInput = listItem.querySelector('input[type=text]');
+  const label = listItem.querySelector('label');
+  const editBtn = listItem.querySelector('.edit');
+
+  editInput.value = label.innerText;
+  editBtn.innerText = 'Edit';
+
   incompleteTaskHolder.appendChild(listItem);
   bindTaskEvents(listItem, taskCompleted);
 };
